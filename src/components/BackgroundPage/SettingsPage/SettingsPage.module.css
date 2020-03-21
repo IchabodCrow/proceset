@@ -1,0 +1,59 @@
+.container {
+    background: #FFFFFF;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin: 12px 22px;
+    padding: 24px;
+
+}
+
+.textAndInput{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.text{
+    align-self: center;
+    position: fixed;
+    color: #999999;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.input{
+    margin-top: -6px;
+    margin-bottom: -6px;
+    margin-left: 297px;
+}
+
+.subtitle{
+    margin: 0 22px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.userName{
+    margin-top: 22px;
+    font-family: Open Sans;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    color: #404064;
+}
+
+.button {
+    padding: 0 12px;
+    height: 36px;
+    background: #FFCE0C;
+    border: none;
+    border-radius: 4px;
+    margin-top: 12px;
+    font-weight: bold;
+}
