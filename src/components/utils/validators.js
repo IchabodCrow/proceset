@@ -15,6 +15,7 @@ export const formValidator = (fields) => {
 };
 
 export const passLength = (len) => (value) => {
+  console.log('Click')
   return value?.length < len
     ? `Length of password will be more or equal ${len}`
     : null;
@@ -34,3 +35,6 @@ export const onlyEmail = (value) => {
 export const passValid = (fields) => {
     return isEmpty(fields?.passwordField.value != fields?.repPas.value) ? 'Password not clone' : null;
 }
+
+export const matchInput = (field, allInputs) =>
+field === allInputs.passwordField ? undefined : 'Пароль не совпадает';

@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 import regForm from './LoginForm.module.css'
-import {formValidator, onlyEmail, passValid} from '../../utils/validators'
+import {formValidator, onlyEmail, passValid, matchInput} from '../../utils/validators'
 import { connect, MapStateToProps, MapDispatchToProps } from "react-redux"
 import { incAction } from "../../store/index.reducers";
 
 import Button from '../../UI/Button/Button'
-import Input from '../../UI/Input/Input'
+import myInput from '../../UI/Input/Input'
+
+
 
 
 const server = new Promise((resolve, reject) => {
@@ -19,12 +21,6 @@ const server = new Promise((resolve, reject) => {
   });
 
 class LoginForm extends React.PureComponent {
-  
-    componentDidMount() {
-    this.props.onIncrement();
-    console.warn(this.props.str);
-    console.warn(this.props.count);
-  }
    
     handleSubmit(fields) {
         console.warn(fields);
@@ -41,40 +37,42 @@ class LoginForm extends React.PureComponent {
 
     render(){
 
+      const {handleSubmit} = this.props;
+
         return (
             <>
             {this.props.error ? <span>{this.props.error}</span> : null}
             <form 
                 className={regForm.formContent}
-                 onSubmit={this.props.handleSubmit(this.handleSubmit)}
+                onSubmit={handleSubmit}
             >
            
             <Field 
                 name='loginField'
                 type='text'
-                component={Input}
-                validate={[formValidator]}
+                component={myInput}
+                // validate={[formValidator]}
                 placeholderText='Введите имя'
             />
             <Field 
                 name='email'
                 type='text'
-                component={Input}
-                validate={[onlyEmail]}
+                component={myInput}
+                // validate={[onlyEmail]}
                 placeholderText='Введите email'
             />
             <Field 
                 name='passwordField'
                 type='password'
-                component={Input}
-                validate={[formValidator]}
+                component={myInput}
+                // validate={[formValidator]}
                 placeholderText='Введите пароль'
             />
             <Field 
                 name='repPas'
                 type='password'
-                component={Input}
-                validate={[passValid]}
+                component={myInput}
+                validate={[matchInput]}
                 placeholderText='Повторите пароль'
             />
             <Button
@@ -100,17 +98,9 @@ const mapStateToProps = state => {
     };
   };
   
-  const mapDispatchToProps= (dispatch) => {
-    return {
-      onIncrement() {
-        dispatch(incAction());
-      }
-    };
-  };
 
   const ConnectedLogin = connect(
   mapStateToProps,
-  mapDispatchToProps
 )(connectedToReduxForm(LoginForm));
 
 
