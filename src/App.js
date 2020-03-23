@@ -5,18 +5,21 @@ import "./App.css";
 import ProcesetFirstPage from "./components/ProcesetFirstPAge/ProcesetFirstPage";
 import BackgroundPage from "./components/BackgroundPage/BackgroundPage";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
-import {Provider as ReduxProvider} from 'react-redux'
+import {Provider} from 'react-redux'
+import store from './components/store/index.store'
 
 class App extends React.Component {
+
+  
   render(){
     return (
     <div>
-      <ReduxProvider>
-            <BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
            <ProcesetFirstPage />
        {/* <BackgroundPage/> */}
-      </BrowserRouter>
-      </ReduxProvider>
+        </BrowserRouter>
+      </Provider>
   
  
     </div>

@@ -3,7 +3,7 @@ import drower from './Drower.module.css'
 import {Link} from 'react-router-dom'
 import Blackout from '../../../UI/Blackout/Blackout';
 import {ReactComponent as ButSvg} from '../../../../resources/Union.svg';
-import {ReactComponent as UserSvg} from '../../../../resources/Username.svg';
+import {ReactComponent as UserSvg} from '../../../../resources/UserName.svg';
 import {ReactComponent as SetSvg} from '../../../../resources/Settings.svg';
 
 

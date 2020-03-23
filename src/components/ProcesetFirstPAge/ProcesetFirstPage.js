@@ -9,12 +9,7 @@ import PageFormRegistration from "./PageFormRegistration/PageFormRegistration";
 
 
 export default class ProcesetFirstPage extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-        }
-    }
+   
     render() {
         return (
             <div>

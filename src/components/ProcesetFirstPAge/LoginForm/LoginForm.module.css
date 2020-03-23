@@ -1,0 +1,14 @@
+.formContent {
+    padding: 36px 48px;
+  
+  }
+  
+.button {
+    width: 328px;
+    height: 36px;
+    background: #FFCE0C;
+    border: none;
+    border-radius: 4px;
+    margin-top: 12px;
+    font-weight: bold;
+  }
