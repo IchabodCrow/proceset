@@ -5,6 +5,7 @@ import Button from "../../UI/Button/Button";
 import {NavLink} from "react-router-dom";
 import { reduxForm } from "redux-form";
 import LoginForm from "../LoginForm/LoginForm";
+import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
 
 export default class PageFormRegistration extends Component {
@@ -35,7 +36,7 @@ export default class PageFormRegistration extends Component {
                     onSubmit={this.submit}
                     initialValues={this.getInitialValues()}
                 />
-            <div>Уже зарегестрированы?</div><NavLink to="/form">Вернуться</NavLink>
+            <ErrorMessage/>
            </>
         )
     }

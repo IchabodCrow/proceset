@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 import regForm from './LoginForm.module.css'
-import {formValidator, onlyEmail, passValid, matchInput} from '../../utils/validators'
+import {validate, onlyEmail, passValid, matchInput, passLength} from '../../utils/validators'
 import { connect, MapStateToProps, MapDispatchToProps } from "react-redux"
 import { incAction } from "../../store/index.reducers";
 
+
 import Button from '../../UI/Button/Button'
 import myInput from '../../UI/Input/Input'
+import ErrorMessage from '../../ErrorMessage/ErrorMessage'
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -19,6 +22,8 @@ const server = new Promise((resolve, reject) => {
       }
     });
   });
+
+  const passwordValidator = passLength(8);
 
 class LoginForm extends React.PureComponent {
    
@@ -37,35 +42,32 @@ class LoginForm extends React.PureComponent {
 
     render(){
 
-      const {handleSubmit} = this.props;
-
+  
         return (
-            <>
-            {this.props.error ? <span>{this.props.error}</span> : null}
+            <div>
+            
             <form 
                 className={regForm.formContent}
-                onSubmit={handleSubmit}
+                onSubmit={this.props.handleSubmit(this.handleSubmit)}
             >
            
             <Field 
                 name='loginField'
                 type='text'
                 component={myInput}
-                // validate={[formValidator]}
                 placeholderText='Введите имя'
             />
             <Field 
                 name='email'
                 type='text'
                 component={myInput}
-                // validate={[onlyEmail]}
                 placeholderText='Введите email'
             />
             <Field 
                 name='passwordField'
                 type='password'
                 component={myInput}
-                // validate={[formValidator]}
+                validate={[passwordValidator]}
                 placeholderText='Введите пароль'
             />
             <Field 
@@ -76,24 +78,27 @@ class LoginForm extends React.PureComponent {
                 placeholderText='Повторите пароль'
             />
             <Button
-            onClick={this.Click}
-                className={regForm.button}>Применить и войти</Button>
-           
+                onClick={this.Click}
+                className={regForm.button}>Применить и войти
+            </Button>
+  
         </form>
-        </>
+            {error && (<div class="мой-охеренный-красный-класс">{error}</div>)}
+        </div>
         )
     }
 }
 const connectedToReduxForm = reduxForm({
   form: "loginForm",
-  validate: formValidator
+  validate: validate
 });
 
 const mapStateToProps = state => {
     return {
       count: state?.count,
       initialValues: {
-        loginField: "Initialing login field"
+        loginField: "",
+        
       }
     };
   };
