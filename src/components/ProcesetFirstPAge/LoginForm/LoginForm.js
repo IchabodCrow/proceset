@@ -4,7 +4,7 @@ import regForm from './LoginForm.module.css'
 import {validate, onlyEmail, passValid, matchInput, passLength} from '../../utils/validators'
 import { connect, MapStateToProps, MapDispatchToProps } from "react-redux"
 import { incAction } from "../../store/index.reducers";
-
+import {ReactComponent as Allert} from '../../../resources/alert.svg'
 
 import Button from '../../UI/Button/Button'
 import myInput from '../../UI/Input/Input'
@@ -83,7 +83,14 @@ class LoginForm extends React.PureComponent {
             </Button>
   
         </form>
-            {error && (<div class="мой-охеренный-красный-класс">{error}</div>)}
+        {this.props.error && (<div className="regForm.box">
+         <Allert className={regForm.allert}/>
+          <div className={regForm.mesErr}> 
+            <p>{this.props.error}</p>
+          </div>
+          
+          
+          </div>)}
         </div>
         )
     }

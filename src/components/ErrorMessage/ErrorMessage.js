@@ -7,8 +7,7 @@ class ErrorMessage extends React.Component {
     return (
       <>
         <div className={errMes.box}>
-          <Allert className={errMes.allert}/>
-          <span>{this.props.error}</span>
+         
         </div>
       </>
     )

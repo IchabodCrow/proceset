@@ -36,7 +36,6 @@ export default class PageFormRegistration extends Component {
                     onSubmit={this.submit}
                     initialValues={this.getInitialValues()}
                 />
-            <ErrorMessage/>
            </>
         )
     }

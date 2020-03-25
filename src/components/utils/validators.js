@@ -10,20 +10,20 @@ export const matchInput = (field, allInputs) =>
 field === allInputs.passwordField ? undefined : 'Пароль не совпадает';
 
 export const validate = values => {
-  const errors = {}
+  const errors = []
   if (!values.loginField) {
     errors.loginField = 'Required'
   } else if (values.loginField.length > 15) {
-    errors.loginField = 'Must be 15 characters or less'
+    errors.push('Must be 15 characters or less')
   }
   if (!values.passwordField) {
-    errors.passwordField = 'Введите ваш пароль';
+    errors.push('Enter your password');
   }
   if (!values.email) {
-    errors.email = 'Invalid email address'
+    errors.push('Invalid email address')
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
+    errors.push('Invalid email address')
   }
 
-  return errors
+  return {_error: errors}
 }
