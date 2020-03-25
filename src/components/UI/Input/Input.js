@@ -33,7 +33,7 @@ const myInput = ({ input, label, type, meta: { touched, error, warning } }) => {
   const cls = [myInp.input]
 
    
-  if(error){
+  if(error && touched){
     cls.push(myInp.error);
   }  
 
@@ -42,6 +42,7 @@ const myInput = ({ input, label, type, meta: { touched, error, warning } }) => {
     <label>{label}</label>
     <div>
       <input {...input} placeholder={label} type={type} className={cls.join(' ')}/>
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
     </div>
   </div>
 )}

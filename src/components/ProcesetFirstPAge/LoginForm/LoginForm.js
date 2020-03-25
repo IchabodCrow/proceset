@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 import regForm from './LoginForm.module.css'
-import {validate, onlyEmail, passValid, matchInput, passLength} from '../../utils/validators'
+import {validate, onlyEmail, passValid, matchInput, passLength, email, required} from '../../utils/validators'
 import { connect, MapStateToProps, MapDispatchToProps } from "react-redux"
 import { incAction } from "../../store/index.reducers";
 import {ReactComponent as Allert} from '../../../resources/alert.svg'
@@ -55,12 +55,14 @@ class LoginForm extends React.PureComponent {
                 name='loginField'
                 type='text'
                 component={myInput}
+                validate={[required]}
                 placeholderText='Введите имя'
             />
             <Field 
                 name='email'
                 type='text'
                 component={myInput}
+                validate={[email]}
                 placeholderText='Введите email'
             />
             <Field 
@@ -83,21 +85,12 @@ class LoginForm extends React.PureComponent {
             </Button>
   
         </form>
-        {this.props.error && (<div className="regForm.box">
-         <Allert className={regForm.allert}/>
-          <div className={regForm.mesErr}> 
-            <p>{this.props.error}</p>
-          </div>
-          
-          
-          </div>)}
         </div>
         )
     }
 }
 const connectedToReduxForm = reduxForm({
   form: "loginForm",
-  validate: validate
 });
 
 const mapStateToProps = state => {
