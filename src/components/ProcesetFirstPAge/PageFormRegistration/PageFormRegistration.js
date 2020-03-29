@@ -4,7 +4,7 @@ import body from "../ProcesetFirstPage.module.css";
 import Button from "../../UI/Button/Button";
 import {NavLink} from "react-router-dom";
 import { reduxForm } from "redux-form";
-import LoginForm from "../LoginForm/LoginForm";
+import RegForm from "./RegForm/RegForm"
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
 
@@ -28,11 +28,15 @@ export default class PageFormRegistration extends Component {
       };
   }
 
+    submit = (values) => {
+        console.log('Value from submit',values);
+    }
+
     render() {
         return (
            <>
             <div>Регистрация</div>
-                <LoginForm 
+                <RegForm 
                     onSubmit={this.submit}
                     initialValues={this.getInitialValues()}
                 />

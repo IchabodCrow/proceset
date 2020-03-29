@@ -1,51 +1,49 @@
 import React, {Component} from 'react'
 import {Field, reduxForm, SubmissionError} from 'redux-form'
-import regForm from './LoginForm.module.css'
-import {validate, onlyEmail, passValid, matchInput, passLength, email, required} from '../../utils/validators'
-import { connect, MapStateToProps, MapDispatchToProps } from "react-redux"
-import { incAction } from "../../store/index.reducers";
-import {ReactComponent as Allert} from '../../../resources/alert.svg'
+import regForm from './RegForm.module.css'
+import { matchInput, passLength, email, required} from '../../../utils/validators'
 
-import Button from '../../UI/Button/Button'
-import myInput from '../../UI/Input/Input'
-import ErrorMessage from '../../ErrorMessage/ErrorMessage'
-import { NavLink } from 'react-router-dom'
+import RegMutation from '../../../queries/signup'
+import Button from '../../../UI/Button/Button'
+import myInput from '../../../UI/Input/Input'
+import { withMutation } from "react-apollo";
 
+const passwordValidator = passLength(8);
 
 
+class RegForm extends Component {
+  constructor(props){
+    super(props)
 
-const server = new Promise((resolve, reject) => {
- 
-    resolve({
-      data: {
-        user: "Vasya"
-      }
-    });
-  });
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  const passwordValidator = passLength(8);
-
-class LoginForm extends React.PureComponent {
-   
     handleSubmit(fields) {
-        console.warn(fields);
-        return new Promise((resolve, reject) => {
-          server
-            .then(res => {
-              resolve(res);
-            })
-            .catch(e => {
-              reject(new SubmissionError({ _error: "Что-то пошло не так" }));
-            });
-        });
-      }
+      console.log('Fields from handleSubmit',fields);
+      
+      const { mutate } = this.props;
 
-    render(){
-
+      return new Promise((resolve, reject) => {
+        mutate({
+          variables: {
+            firstName: fields.loginField,
+            email: fields.email,
+            password: fields.passwordField
+          }
+        })
+          .then(res => {
+           console.log(res.data);
+            resolve(res);
+          })
+          .catch(e => {
+            reject(new SubmissionError({ _error: e?.message }));
+          });
+   });
+  }
   
+    render(){
         return (
             <div>
-            
             <form 
                 className={regForm.formContent}
                 onSubmit={this.props.handleSubmit(this.handleSubmit)}
@@ -85,6 +83,8 @@ class LoginForm extends React.PureComponent {
             </Button>
   
         </form>
+          
+        {this.props.error ? <span>{this.props.error}</span> : null}
         </div>
         )
     }
@@ -93,22 +93,7 @@ const connectedToReduxForm = reduxForm({
   form: "loginForm",
 });
 
-const mapStateToProps = state => {
-    return {
-      count: state?.count,
-      initialValues: {
-        loginField: "",
-        
-      }
-    };
-  };
-  
-
-  const ConnectedLogin = connect(
-  mapStateToProps,
-)(connectedToReduxForm(LoginForm));
 
 
-
-export default ConnectedLogin
+export default withMutation(RegMutation)(connectedToReduxForm(RegForm))
 
