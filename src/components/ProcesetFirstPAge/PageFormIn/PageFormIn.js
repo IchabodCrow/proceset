@@ -31,9 +31,7 @@ export default class PageFormIn extends Component {
   
     return (
       <div className={body.formContent}>
-        {/* <Input placeholderText={placeholder.name} />
-        <Input type={type.inputPas} placeholderText={placeholder.pas} />
-        <Button className={body.button}>Войти в систему</Button> */}
+        
        <LoginForm/>
         <NavLink to="/registration">Регистрация</NavLink>
       </div>

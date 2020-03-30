@@ -1,32 +1,7 @@
 import React, { Fragment } from 'react';
 import myInp from './Input.module.css';
 
-//  const myInput = (props) =>{
-//     const {input, type, placeholder, meta}=props;
 
-      
-//     const cls = [myInp.input]
-
-//     if(meta.error){
-//         cls.push(myInp.error)
-//     }
-
-//     return (
-//         <Fragment>
-//         <input {...props.input} 
-//                 type={props.type} 
-//                 placeholder={props.placeholder} 
-//                 className={cls.join(' ')}
-//         />
-
-//         {meta.error &&
-//         meta.touched &&
-//         <div>
-         
-//         </div>}
-//         </Fragment>
-//     )
-// }
 
 const myInput = ({ input, label, type, meta: { touched, error, warning } }) => {
 

@@ -21,24 +21,22 @@ export default class PageFormRegistration extends Component {
 //     }
 // };
     
-  getInitialValues(){
-      return {
-          username: "Юрчик",
-          password: "",
-      };
-  }
+//   getInitialValues(){
+//       return {
+//           username: "Юрчик",
+//           password: "",
+//       };
+//   }
 
-    submit = (values) => {
-        console.log('Value from submit',values);
-    }
+   
 
     render() {
         return (
            <>
             <div>Регистрация</div>
                 <RegForm 
-                    onSubmit={this.submit}
-                    initialValues={this.getInitialValues()}
+
+                    // initialValues={this.getInitialValues()}
                 />
            </>
         )

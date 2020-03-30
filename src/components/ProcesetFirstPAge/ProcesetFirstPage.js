@@ -17,7 +17,7 @@ export default class ProcesetFirstPage extends Component {
                         <LogoSvg/>
                     </div>
                     <div className={body.form}>
-                        <Route path={'/registration'} render={() => <PageFormRegistration/>}/>
+                        <Route exact path={'/registration'} render={() => <PageFormRegistration/>}/>
                         <Route exact path={'/form'} render={() => <PageFormIn/>}/>
                     </div>
                

@@ -32,7 +32,6 @@ export default class Drower extends Component {
 
     render(){
 
-      
         const cls = [drower.drower]
 
         if(!this.props.isOpen){

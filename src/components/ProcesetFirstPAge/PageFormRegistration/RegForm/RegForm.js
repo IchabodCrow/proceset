@@ -8,6 +8,7 @@ import Button from '../../../UI/Button/Button'
 import myInput from '../../../UI/Input/Input'
 import { withMutation } from "react-apollo";
 
+
 const passwordValidator = passLength(8);
 
 
@@ -18,23 +19,23 @@ class RegForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-    handleSubmit(fields) {
-      console.log('Fields from handleSubmit',fields);
-      
+    handleSubmit(fields) { 
       const { mutate } = this.props;
 
       return new Promise((resolve, reject) => {
         mutate({
           variables: {
-            firstName: fields.loginField,
+            firstName: fields.firstName,
+            secondName: fields.secondName,
             email: fields.email,
             password: fields.passwordField
           }
         })
-          .then(res => {
-           console.log(res.data);
-            resolve(res);
-          })
+        .then(res => { 
+          localStorage.setItem('token', res.data.signup)
+          resolve(res);
+          
+        })
           .catch(e => {
             reject(new SubmissionError({ _error: e?.message }));
           });
@@ -50,11 +51,18 @@ class RegForm extends Component {
             >
            
             <Field 
-                name='loginField'
+                name='firstName'
                 type='text'
                 component={myInput}
                 validate={[required]}
                 placeholderText='Введите имя'
+            />
+             <Field 
+                name='secondName'
+                type='text'
+                component={myInput}
+                validate={[required]}
+                placeholderText='Введите фамилию'
             />
             <Field 
                 name='email'
@@ -90,7 +98,7 @@ class RegForm extends Component {
     }
 }
 const connectedToReduxForm = reduxForm({
-  form: "loginForm",
+  form: "regForm",
 });
 
 

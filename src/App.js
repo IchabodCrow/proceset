@@ -7,12 +7,15 @@ import store from './components/store/index.store';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hoc';
 import ProcessList from "./components/ProcessList/ProcessList";
+import BackgroundPage from './components/BackgroundPage/BackgroundPage'
+import { Route } from "react-router-dom";
 
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/api/",
   request: (operation) => {
-    const token = localStorage.getItem("token");
+    const token = '';
+    localStorage.getItem("token");
 
     operation.setContext({
       headers: {
@@ -32,9 +35,10 @@ class App extends React.Component {
       <ApolloProvider client={client}>
         <Provider store={store}>
           <BrowserRouter>
-             <ProcesetFirstPage />
-             <ProcessList/>
-         {/* <BackgroundPage/> */}
+            <ProcesetFirstPage/>
+             
+            {/* <BackgroundPage/> */}
+
          </BrowserRouter>
        </Provider>
       </ApolloProvider>

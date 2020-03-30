@@ -7,23 +7,6 @@
 
 }
 
-.textAndInput{
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-}
-
-.text{
-    align-self: center;
-    position: fixed;
-    color: #999999;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-}
-
 .input{
     margin-top: -6px;
     margin-bottom: -6px;

@@ -6,49 +6,42 @@ import { connect, MapStateToProps, MapDispatchToProps } from "react-redux"
 import { incAction } from "../../../store/index.reducers";
 import { gql } from 'apollo-boost';
 import { graphql, DataProps } from 'react-apollo';
-
+import { withMutation } from "react-apollo";
+import LoginMutation from '../../../queries/loginMutation'
 
 import Button from '../../../UI/Button/Button'
 import myInput from '../../../UI/Input/Input'
 
 
-
-
-
-const server = new Promise((resolve, reject) => {
- 
-    resolve({
-      data: {
-        user: "Vasya"
-      }
-    });
-  });
-
-
 class LoginForm extends React.Component {
+    constructor(props){
+      super(props)
+      this. handleSubmit = this.handleSubmit.bind(this);
+    }
     
     handleSubmit(fields) {
-        return new Promise((resolve, reject) => {
-          server
-            .then(res => {
-              resolve(res);
-            })
-            .catch(e => {
-              reject(new SubmissionError({ _error: "Что-то пошло не так" }));
-            });
-        });
-      }
+      
+      const { mutate } = this.props;
+
+      return new Promise((resolve, reject) => {
+        mutate({
+          variables: {
+            email: fields.email,
+            password: fields.passwordField
+          }
+        })
+        .then(res => { 
+          localStorage.setItem('token', res.data.login.token)
+          resolve(res);
+          
+        })
+          .catch(e => {
+            reject(new SubmissionError({ _error: e?.message }));
+          });
+   });
+  }
 
     render(){
-        const { data } = this.props;
-
-        if(data.loading) {
-            return <p>Загрузка...</p>;
-        }
-
-        if(data.error) {
-            return <p>Ошибка...</p>
-        }
   
         return (
             <div>
@@ -76,14 +69,17 @@ class LoginForm extends React.Component {
   
         </form>
 
-        <p>
-        Герой с идентификатором "{data.hero?.id}" и именем "{data.hero?.name}"
-        </p>
+      
         </div>
         )
     }
 }
+const connectedToReduxForm = reduxForm({
+  form: "loginForm",
+});
 
-export default LoginForm
+
+
+export default withMutation(LoginMutation)(connectedToReduxForm(LoginForm))
 
 

@@ -5,6 +5,9 @@ import InputWithText from "../../UI/InputWithText/InputWithText";
 import Button from "../../UI/Button/Button";
 
 export default class SettingPage extends Component {
+
+  
+
   render() {
     const text = {
       name: "Имя",
@@ -17,10 +20,11 @@ export default class SettingPage extends Component {
       pas: "password",
       email: "email"
     };
+
     return (
       <div className={setting.box}>
         <div className={setting.subtitle}>
-          <div className={setting.userName}>Борис Годунов. Редактирование</div>
+          <div className={setting.userName}>{localStorage.getItem('firstName  ' )}. Редактирование</div>
           <Button className={setting.button}>Сохранить</Button>
         </div>
         <div className={setting.container}>
