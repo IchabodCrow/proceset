@@ -15,6 +15,8 @@ const ProcessList = props => {
       fetchPolicy: "network-only"
     }
   )
+  
+  
   if (loading) {
     return <p>...загрузка</p>;
   }
@@ -34,4 +36,3 @@ const ProcessList = props => {
 
 
 export default ProcessList
-

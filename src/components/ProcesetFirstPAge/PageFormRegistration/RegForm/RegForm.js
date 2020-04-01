@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 import regForm from './RegForm.module.css'
-import { matchInput, passLength, email, required} from '../../../utils/validators'
+import { matchInput, passLength, email, required, requiredSec} from '../../../utils/validators'
 
 import RegMutation from '../../../queries/signup'
 import Button from '../../../UI/Button/Button'
@@ -48,6 +48,7 @@ class RegForm extends Component {
     render(){
         return (
             <div>
+            <div>Регистрация</div>
             <form 
                 className={regForm.formContent}
                 onSubmit={this.props.handleSubmit(this.handleSubmit)}
@@ -58,35 +59,35 @@ class RegForm extends Component {
                 type='text'
                 component={myInput}
                 validate={[required]}
-                placeholderText='Введите имя'
+                placeholder='Введите имя'
             />
              <Field 
                 name='secondName'
                 type='text'
                 component={myInput}
-                validate={[required]}
-                placeholderText='Введите фамилию'
+                validate={[requiredSec]}
+                placeholder='Введите фамилию'
             />
             <Field 
                 name='email'
                 type='text'
                 component={myInput}
                 validate={[email]}
-                placeholderText='Введите email'
+                placeholder='Введите email'
             />
             <Field 
                 name='passwordField'
                 type='password'
                 component={myInput}
                 validate={[passwordValidator]}
-                placeholderText='Введите пароль'
+                placeholder='Введите пароль'
             />
             <Field 
                 name='repPas'
                 type='password'
                 component={myInput}
                 validate={[matchInput]}
-                placeholderText='Повторите пароль'
+                placeholder='Повторите пароль'
             />
             <Button
                 className={regForm.button}>Применить и войти

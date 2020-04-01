@@ -2,8 +2,10 @@ import React, {Component} from "react";
 import {Route, Switch} from 'react-router-dom';
 import {ReactComponent as LogoSvg} from '../../resources/Vector.svg';
 import body from './ProcesetFirstPage.module.css'
-import PageFormIn from "./PageFormIn/PageFormIn";
-import PageFormRegistration from "./PageFormRegistration/PageFormRegistration";
+
+
+import RegForm from "./PageFormRegistration/RegForm/RegForm";
+import LoginForm from "./PageFormIn/LoginForm/LoginForm";
 
 
 export default class ProcesetFirstPage extends Component {
@@ -18,9 +20,8 @@ export default class ProcesetFirstPage extends Component {
                     </div>
                     <div className={body.form}>
                 
-                        {/* <Route exact path={'/'} render={() => <PageFormIn/>}/> */}
-                    
-                        <Route exact path="/" component={PageFormIn}/>
+                        <Route exact path={'/registration'} render={() => <RegForm/>}/>
+                        <Route exact path="/" component={LoginForm}/>
                     </div>
                
             </div>

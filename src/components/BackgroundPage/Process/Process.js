@@ -7,7 +7,7 @@ export default class Propcess extends React.Component {
 
     render() {  
         const process = this.props.processData;
-        console.log(process)
+    
         return (
             
             <div className={dash.content} >

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import back from './BackgroundPage.module.css';
 import {Route, Router, BrowserRouter} from 'react-router-dom';
-
+import ProcessList from "../ProcessList/ProcessList"
 import SettingPage from "./SettingsPage/SettingsPage";
 import Menu from "./Navigation/Menu/Menu";
 import Drower from "./Navigation/Drower/Drower";
@@ -44,12 +44,8 @@ constructor(props){
                     isOpen={this.state.menu}
                     onClose={this.menuCloseHandler}/>
                 </div>
-               
-        
-                
-                
-                 
-               
+                <Route path="/setting" render={() => <SettingPage/>}/>
+                <Route path="/process" render={() => <ProcessList/>}/>
             </>
         )
     }

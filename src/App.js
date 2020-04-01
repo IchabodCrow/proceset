@@ -11,8 +11,6 @@ import BackgroundPage from './components/BackgroundPage/BackgroundPage'
 import { Route, Router} from "react-router";
 import SettingsPage from "./components/BackgroundPage/SettingsPage/SettingsPage";
 import Process from "./components/BackgroundPage/Process/Process";
-import PageFormIn from "./components/ProcesetFirstPAge/PageFormIn/PageFormIn";
-import PageFormRegistration from "./components/ProcesetFirstPAge/PageFormRegistration/PageFormRegistration";
 import ProcessList from "./components/ProcessList/ProcessList";
 
 
@@ -43,16 +41,8 @@ class App extends React.Component {
         <Provider store={store}>
         
           <Router history={history}>
-              
-                <Route exact path="/" component={PageFormIn}/>
-             
-              
-    
-  
-              <Route render={() => <BackgroundPage/>}/>
-                  <Route path="/setting" component={SettingsPage}/>
-                  <Route path="/process" component={Process}/>
-               <ProcessList/>
+            {/* <BackgroundPage/> */}
+            <ProcesetFirstPage/>
           </Router>
          
        </Provider>

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 import regForm from '../../PageFormRegistration/RegForm/RegForm.module.css'
 
+import {Link} from 'react-router-dom'
 import { withMutation } from "react-apollo";
 import LoginMutation from '../../../queries/loginMutation'
 
@@ -38,7 +39,11 @@ class LoginForm extends React.Component {
   }
 
     render(){
-  
+
+    const place = {
+      name: "Введите имя"
+    }
+
         return (
             <div>
             
@@ -50,20 +55,22 @@ class LoginForm extends React.Component {
                 name='email'
                 type='text'
                 component={myInput}
-                placeholderText='Введите email'
+                placeholder="Введите имя"
             />
             <Field 
                 name='passwordField'
                 type='password'
                 component={myInput}
-                placeholderText='Введите пароль'
+                placeholder='Введите пароль'
             />
             <Button
                
                 className={regForm.button}>Войти в систему
             </Button>
+            
   
         </form>
+        <Link to="/registration">Регистрация</Link>
 
       
         </div>
