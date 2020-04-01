@@ -2,7 +2,6 @@ import React from "react";
 import dash from './Process.module.css'
 import ProcessList  from "../../ProcessList/ProcessList";
 
-// import content from "../content/Content.module.css";
 
 export default class Propcess extends React.Component {
 
@@ -19,7 +18,7 @@ export default class Propcess extends React.Component {
                     <div className={dash.data}>
 
                         <div className={dash.firstData}>
-                            <span className={dash.firstData}>304304</span>
+                            <span className={dash.firstNumb}>{process.numberOfExecutions}</span>
                             <p className={dash.underNumb}>выполнено раз</p>
                         </div>
 
@@ -28,7 +27,7 @@ export default class Propcess extends React.Component {
                             <div>
                                     <span className={dash.numb}>
                                        
-                                        10 ч 36 мин
+                                        {process.averageLeadTime}
                                     </span>
                                 <p className={dash.underNumb}>среднее время выполнения</p>
                             </div>
@@ -36,7 +35,7 @@ export default class Propcess extends React.Component {
                             <div>
                                     <span className={dash.numb}>
                                        
-                                        1 ч 7 мин (10,5%)
+                                    {process.averageActiveTime} (10,5%)
                                     </span>
                                 <p className={dash.underNumb}>среднее активное время</p>
                             </div>
@@ -47,7 +46,7 @@ export default class Propcess extends React.Component {
 
                                     <span className={dash.numb}>
                                         
-                                        120 сотрудников
+                                       {process.employeesInvolvedProcess} сотрудников
                                     </span>
                                 <p className={dash.underNumb}>учавствует в процессе</p>
                             </div>
@@ -55,7 +54,7 @@ export default class Propcess extends React.Component {
 
                                     <span className={dash.numb}>
                                        
-                                        129 сценариев
+                                    {process.numberOfScenarios} сценариев
                                     </span>
                                 <p className={dash.underNumb}>в процессе</p>
                             </div>
@@ -63,15 +62,15 @@ export default class Propcess extends React.Component {
                         <div className={dash.procesTime}>
                             <div className={dash.time}>
                                 <span className={dash.underNumb}>Начало</span>
-                                <span> 11 ноября 2017</span>
+                                 <span> {process.start}</span>
                             </div>
                             <div className={dash.time}>
                                 <span className={dash.underNumb}>Окончание</span>
-                                <span> 11 ноября 2017</span>
+                                <span> {process.end}</span>
                             </div>
                             <div className={dash.time}>
                                 <span className={dash.underNumb}>Загрузка</span>
-                                <span> 11 ноября 2017</span>
+                                <span> {process.loading}</span>
                             </div>
                         </div>
                     </div>

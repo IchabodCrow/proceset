@@ -12,15 +12,6 @@ export default class PageFormIn extends Component {
   }
 
   render() {
-    const placeholder = {
-      name: "Введите имя",
-      pas: "Введите пароль"
-    };
-
-    const type = {
-      inputPas: "password"
-    };
-
   
     return (
       <div className={body.formContent}>

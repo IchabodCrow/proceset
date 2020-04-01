@@ -48,6 +48,11 @@
 
     color: #6879BB;
 }
+.firstNumb {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 35px;
+}
 
 .underNumb{
     font-family: Open Sans;
@@ -57,7 +62,8 @@
     line-height: 16px;
     color: #999999;
     align-self: flex-end;
-    margin-left: 32px;
+    margin-bottom: 20px;
+    
 }
 .img {
     margin-right: 14px;
@@ -75,13 +81,10 @@
     justify-content: space-between;
 }
 .time span {
-
     font-size: 12px;
-
 }
 
 .content{
     grid-area: c;
     width:100%;
-
 }

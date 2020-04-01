@@ -1,11 +1,7 @@
 import React, {Component} from 'react'
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 import regForm from '../../PageFormRegistration/RegForm/RegForm.module.css'
-import { matchInput, passLength, email, required} from '../../../utils/validators'
-import { connect, MapStateToProps, MapDispatchToProps } from "react-redux"
-import { incAction } from "../../../store/index.reducers";
-import { gql } from 'apollo-boost';
-import { graphql, DataProps } from 'react-apollo';
+
 import { withMutation } from "react-apollo";
 import LoginMutation from '../../../queries/loginMutation'
 
