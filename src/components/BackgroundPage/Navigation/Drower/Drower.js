@@ -7,28 +7,15 @@ import {ReactComponent as UserSvg} from '../../../../resources/UserName.svg';
 import {ReactComponent as SetSvg} from '../../../../resources/Settings.svg';
 
 
-
-const links = [
-     `proceset`,'Username', 'Список процессов'
-];
-
-
+const cls = [drower.drower]
 
 export default class Drower extends Component {
     constructor(props){
         super(props)
+
     }
 
-    renderLinks(){
-        return (
-            links.map((link, index) => (
-                 <li key={index}>
-                    <Link className={drower.link}> {link}</Link>
-                  </li>
-                )
-            )
-        )
-    }
+   
 
     render(){
 
@@ -42,7 +29,27 @@ export default class Drower extends Component {
             <>
             <nav className={cls.join(' ')}>
                <ul>
-                   {this.renderLinks()}
+                   <li>
+                       <ButSvg className={drower.icon} />
+                       <Link 
+                            path to={'/'} 
+                            className={drower.link}
+                        >Proceses
+                        </Link>
+                    </li>
+                   <li>
+                       <UserSvg className={drower.icon}/>
+                        <Link 
+                            path to={'/setting'} 
+                            className={drower.link}>
+                            User name
+                        </Link>
+                    </li>
+                   <li>
+                       <SetSvg className={drower.icon}/>
+                       <Link path to={'/process'} className={drower.link}>Process list</Link>
+                    </li>
+                 
                </ul>
             </nav>
             {this.props.isOpen ? <Blackout onClick={this.props.onClose}/> : null}

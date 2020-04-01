@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {BrowserRouter, Route,} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {ReactComponent as LogoSvg} from '../../resources/Vector.svg';
 import body from './ProcesetFirstPage.module.css'
 import PageFormIn from "./PageFormIn/PageFormIn";
@@ -17,8 +17,10 @@ export default class ProcesetFirstPage extends Component {
                         <LogoSvg/>
                     </div>
                     <div className={body.form}>
-                        <Route exact path={'/registration'} render={() => <PageFormRegistration/>}/>
-                        <Route exact path={'/form'} render={() => <PageFormIn/>}/>
+                
+                        {/* <Route exact path={'/'} render={() => <PageFormIn/>}/> */}
+                    
+                        <Route exact path="/" component={PageFormIn}/>
                     </div>
                
             </div>

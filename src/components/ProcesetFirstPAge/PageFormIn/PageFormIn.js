@@ -2,22 +2,15 @@ import React, { Component } from "react";
 import body from "../ProcesetFirstPage.module.css";
 import Input from "../../UI/Input/Input";
 import Button from "../../UI/Button/Button";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LoginForm from '../PageFormIn/LoginForm/LoginForm'
+import history from "../../history/history";
 
 export default class PageFormIn extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
   }
 
-  getInitialValues(){
-    return {
-        username: "Юрчик",
-        password: "",
-    };
-}
   render() {
     const placeholder = {
       name: "Введите имя",
@@ -33,7 +26,7 @@ export default class PageFormIn extends Component {
       <div className={body.formContent}>
         
        <LoginForm/>
-        <NavLink to="/registration">Регистрация</NavLink>
+        <Link to="/registration">Регистрация</Link>
       </div>
     );
   }

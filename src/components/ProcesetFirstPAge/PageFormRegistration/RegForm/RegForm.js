@@ -7,6 +7,7 @@ import RegMutation from '../../../queries/signup'
 import Button from '../../../UI/Button/Button'
 import myInput from '../../../UI/Input/Input'
 import { withMutation } from "react-apollo";
+import history from '../../../history/history'
 
 
 const passwordValidator = passLength(8);
@@ -17,8 +18,9 @@ class RegForm extends Component {
     super(props)
 
     this.handleSubmit = this.handleSubmit.bind(this);
+  
   }
-
+  
     handleSubmit(fields) { 
       const { mutate } = this.props;
 
@@ -34,6 +36,7 @@ class RegForm extends Component {
         .then(res => { 
           localStorage.setItem('token', res.data.signup)
           resolve(res);
+          history.push("/setting")
           
         })
           .catch(e => {
@@ -86,7 +89,6 @@ class RegForm extends Component {
                 placeholderText='Повторите пароль'
             />
             <Button
-                onClick={this.Click}
                 className={regForm.button}>Применить и войти
             </Button>
   

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import back from './BackgroundPage.module.css';
-
+import {Route, Router, BrowserRouter} from 'react-router-dom';
 
 import SettingPage from "./SettingsPage/SettingsPage";
 import Menu from "./Navigation/Menu/Menu";
 import Drower from "./Navigation/Drower/Drower";
+import Process from "./Process/Process";
 
 export default class BackgroundPage extends Component{
 constructor(props){
@@ -43,7 +44,12 @@ constructor(props){
                     isOpen={this.state.menu}
                     onClose={this.menuCloseHandler}/>
                 </div>
-                <SettingPage/>
+               
+        
+                
+                
+                 
+               
             </>
         )
     }

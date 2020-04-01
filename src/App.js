@@ -1,21 +1,26 @@
 import React from "react";
 import "./App.css";
 import ProcesetFirstPage from "./components/ProcesetFirstPAge/ProcesetFirstPage";
-import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
+import history from './components/history/history'
 import {Provider} from 'react-redux'
 import store from './components/store/index.store';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hoc';
-import ProcessList from "./components/ProcessList/ProcessList";
+import { createBrowserHistory } from "history";
 import BackgroundPage from './components/BackgroundPage/BackgroundPage'
-import { Route } from "react-router-dom";
+import { Route, Router} from "react-router";
+import SettingsPage from "./components/BackgroundPage/SettingsPage/SettingsPage";
+import Process from "./components/BackgroundPage/Process/Process";
+import PageFormIn from "./components/ProcesetFirstPAge/PageFormIn/PageFormIn";
+import PageFormRegistration from "./components/ProcesetFirstPAge/PageFormRegistration/PageFormRegistration";
+import ProcessList from "./components/ProcessList/ProcessList";
 
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/api/",
   request: (operation) => {
-    const token = '';
-    localStorage.getItem("token");
+    
+    const token = localStorage.getItem("token");
 
     operation.setContext({
       headers: {
@@ -26,6 +31,8 @@ const client = new ApolloClient({
 });
 
 
+
+
 class App extends React.Component {
 
   
@@ -34,12 +41,20 @@ class App extends React.Component {
     <div>
       <ApolloProvider client={client}>
         <Provider store={store}>
-          <BrowserRouter>
-            <ProcesetFirstPage/>
+        
+          <Router history={history}>
+              
+                <Route exact path="/" component={PageFormIn}/>
              
-            {/* <BackgroundPage/> */}
-
-         </BrowserRouter>
+              
+    
+  
+              <Route render={() => <BackgroundPage/>}/>
+                  <Route path="/setting" component={SettingsPage}/>
+                  <Route path="/process" component={Process}/>
+               <ProcessList/>
+          </Router>
+         
        </Provider>
       </ApolloProvider>
      

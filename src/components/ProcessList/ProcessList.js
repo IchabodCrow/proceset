@@ -4,22 +4,17 @@ import processListQuery from "../../components/queries/processListQuery";
 import { map } from "lodash";
 import loginMutation from "../queries/loginMutation";
 
+import { Query } from "react-apollo";
+import Process from "../BackgroundPage/Process/Process";
+
+
 const ProcessList = props => {
   const { loading, data, error } = useQuery(
     processListQuery,
     {
       fetchPolicy: "network-only"
     }
-  );
-
-  // test mutation
-  const [addTodo, result] = useMutation(
-      loginMutation,
-      {
-        fetchPolicy: 'network-only'
-      }
-  );
-
+  )
   if (loading) {
     return <p>...загрузка</p>;
   }
@@ -27,29 +22,16 @@ const ProcessList = props => {
   if (error) {
     return <p>Ошибка: {error.message}</p>;
   }
-
-  console.warn(data?.processList);
-
+ console.log(data?.processList)
   return (
-    <div
-      onClick={(e) => {
-        addTodo({
-          variables: {
-            id: 1,
-            str: ""
-          }
-        });
-      }}
-    >
-      {map(data?.processList, process => (
-        <ProcessComponent key={process.id} processData={process} />
-      ))}
-    </div>
+      <div>
+        {data.processList && map(data.processList, process => (
+          <Process key={process.id} processData={process} />
+        ))}
+      </div>
   );
 };
 
-const ProcessComponent = () => {
-  return null;
-};
 
-export default ProcessList;
+export default ProcessList
+

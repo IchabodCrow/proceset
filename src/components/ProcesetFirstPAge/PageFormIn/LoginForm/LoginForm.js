@@ -11,6 +11,7 @@ import LoginMutation from '../../../queries/loginMutation'
 
 import Button from '../../../UI/Button/Button'
 import myInput from '../../../UI/Input/Input'
+import history from '../../../history/history'
 
 
 class LoginForm extends React.Component {
@@ -31,9 +32,8 @@ class LoginForm extends React.Component {
           }
         })
         .then(res => { 
-          localStorage.setItem('token', res.data.login.token)
           resolve(res);
-          
+          history.push("/setting")
         })
           .catch(e => {
             reject(new SubmissionError({ _error: e?.message }));
@@ -63,7 +63,7 @@ class LoginForm extends React.Component {
                 placeholderText='Введите пароль'
             />
             <Button
-                onClick={this.Click}
+               
                 className={regForm.button}>Войти в систему
             </Button>
   
