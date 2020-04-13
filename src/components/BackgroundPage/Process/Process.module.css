@@ -2,7 +2,8 @@
     height: 208px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    align-content: center;
+    justify-content: start;
     flex-wrap: wrap;
     font-family: Open Sans;
     font-style: normal;
@@ -16,10 +17,12 @@
     font-family: Open Sans;
     font-size: 26px;
     line-height: 35px;
+    margin: 0 15px;
 }
 
 .secondData{
     align-self: center;
+    margin: 0 40px;
 }
 
 .form {
@@ -61,8 +64,9 @@
     font-size: 12px;
     line-height: 16px;
     color: #999999;
-    align-self: flex-end;
-    margin-bottom: 20px;
+    align-self: center;
+    margin-left: 59px;
+    margin-right: 10px;    
     
 }
 .img {
@@ -86,5 +90,16 @@
 
 .content{
     grid-area: c;
-    width:100%;
+    margin: 12px;
+    margin-right: 6px;
+    min-width: 60%;
+}
+
+.icon {
+    
+    margin:0 20px;
+    margin-top: 2px;
+}
+.block2 {
+    margin-top: 24px;
 }

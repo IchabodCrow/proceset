@@ -44,8 +44,8 @@ constructor(props){
                     isOpen={this.state.menu}
                     onClose={this.menuCloseHandler}/>
                 </div>
-                <Route path="/setting" render={() => <SettingPage/>}/>
-                <Route path="/process" render={() => <ProcessList/>}/>
+                {/* <Route path="/setting" render={() => <SettingPage/>}/>
+                <Route path="/process" render={() => <ProcessList/>}/> */}
             </>
         )
     }

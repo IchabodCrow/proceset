@@ -1,0 +1,53 @@
+.box{
+
+    display: flex;
+    flex-direction: row;
+}
+#div1{
+    margin-top: 20px;
+    transform: rotate(-10deg);   
+}
+#div2{
+    margin-top: 18px;
+    transform: rotate(-9deg);   
+}
+#div3{
+    margin-top: 16px;
+    transform: rotate(-8deg);   
+}
+#div4{
+    margin-top: 14px;
+    transform: rotate(-6deg);   
+}
+#div5{
+    margin-top: 12px;
+    transform: rotate(-4deg);   
+}
+#div6{
+    margin-top: 14px;
+    transform: rotate(0deg);   
+}
+#div7{
+    margin-top: 16px;
+    transform: rotate(4deg);   
+}
+#div8{
+    margin-top: 18px;
+    transform: rotate(6deg);   
+}
+#div9{
+    margin-top: 20px;
+    transform: rotate(0deg);   
+}
+#div10{
+    margin-top: 18px;
+    transform: rotate(-6deg);   
+}
+#div11{
+    margin-top: 16px;
+    transform: rotate(-8deg);   
+}
+#div12{
+    margin-top: 14px;
+    transform: rotate(-12deg);   
+}

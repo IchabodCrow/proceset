@@ -5,13 +5,13 @@ import classNames from 'classnames';
 const Button = ({children, onClick, className}) => {
 
     const classes = classNames(
-        'btn',
         className,
+        button
     );
 
     return (
         <button
-            className={classes, button.button}
+            className={classNames(className, button.button)}
             onClick={onClick}
         >{children}</button>
     )

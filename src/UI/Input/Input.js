@@ -3,7 +3,7 @@ import myInp from './Input.module.css';
 
 
 
-const myInput = ({ input, label, type, meta: { touched, error, warning } }) => {
+const myInput = ({ input, label, placeholder, type, meta: { touched, error, warning } }) => {
 
   const cls = [myInp.input]
 
@@ -16,7 +16,7 @@ const myInput = ({ input, label, type, meta: { touched, error, warning } }) => {
   <div>
     <label>{label}</label>
     <div>
-      <input {...input} placeholder={label} type={type} className={cls.join(' ')}/>
+      <input {...input} placeholder={placeholder} type={type} className={cls.join(' ')}/>
       {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
     </div>
   </div>

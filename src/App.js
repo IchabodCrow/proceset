@@ -1,17 +1,18 @@
 import React from "react";
 import "./App.css";
-import ProcesetFirstPage from "./components/ProcesetFirstPAge/ProcesetFirstPage";
 import history from './components/history/history'
 import {Provider} from 'react-redux'
 import store from './components/store/index.store';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hoc';
-import { createBrowserHistory } from "history";
-import BackgroundPage from './components/BackgroundPage/BackgroundPage'
-import { Route, Router} from "react-router";
-import SettingsPage from "./components/BackgroundPage/SettingsPage/SettingsPage";
-import Process from "./components/BackgroundPage/Process/Process";
+import { Route, Router, Switch} from "react-router";
 import ProcessList from "./components/ProcessList/ProcessList";
+import RouteWithLayout from "./layouts/RouteWithLayouts";
+import PublicLayout from "./layouts/PublicLayout/index";
+import PrivateLayout from "./layouts/PrivateLayout/index";
+import LoginForm from "./components/LoginForm/LoginForm";
+import RegForm from "./components/RegForm/RegForm";
+import SettingPage from "./components/BackgroundPage/SettingsPage/SettingsPage"
 
 
 const client = new ApolloClient({
@@ -32,24 +33,21 @@ const client = new ApolloClient({
 
 
 class App extends React.Component {
-
-  
   render(){
     return (
     <div>
       <ApolloProvider client={client}>
         <Provider store={store}>
-        
           <Router history={history}>
-            {/* <BackgroundPage/> */}
-            <ProcesetFirstPage/>
+            <Switch>
+              <RouteWithLayout layout={PublicLayout} exact path="/" component={LoginForm}/>
+              <RouteWithLayout layout={PublicLayout} path="/registration" component={RegForm}/>
+              <RouteWithLayout layout={PrivateLayout} path="/setting" component={SettingPage}/>
+              <RouteWithLayout layout={PrivateLayout} path="/process" component={ProcessList}/>
+            </Switch>
           </Router>
-         
        </Provider>
-      </ApolloProvider>
-     
-  
- 
+      </ApolloProvider>     
     </div>
   );
   }

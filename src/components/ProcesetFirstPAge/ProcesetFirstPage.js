@@ -20,8 +20,7 @@ export default class ProcesetFirstPage extends Component {
                     </div>
                     <div className={body.form}>
                 
-                        <Route exact path={'/registration'} render={() => <RegForm/>}/>
-                        <Route exact path="/" component={LoginForm}/>
+                        
                     </div>
                
             </div>

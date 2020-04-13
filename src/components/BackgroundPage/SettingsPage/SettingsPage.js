@@ -61,6 +61,12 @@ class SettingPage extends Component {
       pas: "password",
       email: "email"
     };
+    const place = {
+      name: "Enter name",
+      email: "Enter email ",
+      password: "Enter password",
+      repPas: "Repeat password",
+  }
 
     return (
       <div className={setting.box}>
@@ -81,7 +87,7 @@ class SettingPage extends Component {
                 type='text'
                 component={InputWithText}
                 validate={[required]}
-                placeholderText='Введите имя'
+                placeholder='Введите имя'
                 inputText={text.name}
             />
              <Field 
@@ -89,7 +95,7 @@ class SettingPage extends Component {
                 type='text'
                 component={InputWithText}
                 validate={[required]}
-                placeholderText='Введите фамилию'
+                placeholder='Введите фамилию'
                 inputText={text.surName}
             />
             <Field 
@@ -97,7 +103,7 @@ class SettingPage extends Component {
                 type='text'
                 component={InputWithText}
                 validate={[email]}
-                placeholderText='Введите email'
+                placeholder='Введите email'
                 inputText={text.email}
             />
             <Field 
@@ -105,7 +111,7 @@ class SettingPage extends Component {
                 type='password'
                 component={InputWithText}
                 validate={[passwordValidator]}
-                placeholderText='Введите пароль'
+                placeholder='Введите пароль'
                 inputText={text.newPas}
             />
             <Field 
@@ -113,7 +119,7 @@ class SettingPage extends Component {
                 type='password'
                 component={InputWithText}
                 validate={[matchInput]}
-                placeholderText='Повторите пароль'
+                placeholder='Повторите пароль'
                 inputText={text.rePas}
             />
         </form>

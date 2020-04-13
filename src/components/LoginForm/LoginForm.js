@@ -1,17 +1,13 @@
 import React, {Component} from 'react'
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 import { withMutation, graphql, DataProps } from "react-apollo";
-import { gql } from 'apollo-boost';
-import { connect, MapStateToProps, MapDispatchToProps } from "react-redux"
-
-// import regForm from '../../PageFormRegistration/RegForm/RegForm.module.css'
-import { matchInput, passLength, email, required} from '../utils/validators'
-import { incAction } from "../store/index.reducers";
+import layoutCss from "../../layouts/PublicLayout/index.module.css"
 import LoginMutation from '../queries/loginMutation'
-
 import Button from '../../UI/Button/Button'
 import myInput from '../../UI/Input/Input'
 import history from '../history/history'
+import { Link } from 'react-router-dom';
+
 
 
 class LoginForm extends React.Component {
@@ -47,21 +43,28 @@ class LoginForm extends React.Component {
           <div>
 
             <form
+                className={layoutCss.form}
                 onSubmit={this.props.handleSubmit(this.handleSubmit)}
             >
               <Field
                   name='email'
                   type='text'
                   component={myInput}
-                  placeholderText='Введите email'
+                  placeholder='Введите email'
+                  className={layoutCss.field}
               />
               <Field
                   name='passwordField'
                   type='password'
                   component={myInput}
-                  placeholderText='Введите пароль'
+                  placeholder='Введите пароль'
+                  className={layoutCss.field}
               />
-              <Button>Войти в систему</Button>
+              
+               <Button className={layoutCss.button}>Войти в систему</Button>
+             
+              
+              <Link className={layoutCss.link} to="/registration">Зарегестрироваться</Link>
             </form>
           </div>
         )

@@ -2,13 +2,14 @@ import React, {Component} from 'react'
 import {Field, reduxForm, SubmissionError} from 'redux-form'
 import { withMutation } from "react-apollo";
 
-import regForm from './RegForm.module.css'
+import layoutCss from "../../layouts/PublicLayout/index.module.css"
 import { matchInput, passLength, email, required} from '../utils/validators'
 import RegMutation from '../queries/signup'
 import Button from '../../UI/Button/Button'
 import myInput from '../../UI/Input/Input'
 
 import history from '../history/history'
+import { Link } from 'react-router-dom';
 
 
 const passwordValidator = passLength(8);
@@ -47,52 +48,66 @@ class RegForm extends Component {
   }
 
     render(){
+
+      const place = {
+          name: "Enter name",
+          surname: "Enter surname",
+          email: "Enter email ",
+          password: "Enter password",
+          repPas: "Repeat password",
+      }
         return (
             <div>
-              <div>Регистрация</div>
+              
               <form
-                  className={regForm.formContent}
+                  className={layoutCss.form}
                   onSubmit={this.props.handleSubmit(this.handleSubmit)}
               >
-
+              <div className={layoutCss.head}>Регистрация</div>
               <Field
                   name='firstName'
                   type='text'
                   component={myInput}
                   validate={[required]}
-                  placeholderText='Введите имя'
+                  placeholder={place.name}
+                  className={layoutCss.field}
               />
                <Field
                   name='secondName'
                   type='text'
                   component={myInput}
                   validate={[required]}
-                  placeholderText='Введите фамилию'
+                  placeholder={place.surname}
+                  className={layoutCss.field}
               />
               <Field
                   name='email'
                   type='text'
                   component={myInput}
                   validate={[email]}
-                  placeholderText='Введите email'
+                  placeholder={place.email}
+                  className={layoutCss.field}
               />
               <Field
                   name='passwordField'
                   type='password'
                   component={myInput}
                   validate={[passwordValidator]}
-                  placeholderText='Введите пароль'
+                  placeholder={place.password}
+                  className={layoutCss.field}
               />
               <Field
                   name='repPas'
                   type='password'
                   component={myInput}
                   validate={[matchInput]}
-                  placeholderText='Повторите пароль'
+                  placeholder={place.repPas}
+                  className={layoutCss.field}
               />
               <Button
-                  className={regForm.button}>Применить и войти
+                  className={layoutCss.button}>Применить и войти
               </Button>
+              <Link className={layoutCss.link} exact to="/"> Вернуться</Link>
 
           </form>
 
