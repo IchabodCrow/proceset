@@ -6,7 +6,6 @@
     border: 1px solid #D6DCE9;
     border-radius: 4px;
     padding: 6px 12px;
-    margin: 6px 0;
     font-size: 14px;
     line-height: 19px;
     color: #6879BB;
@@ -14,4 +13,10 @@
 }
 .error {
     border: 1px solid red;
+}
+
+.label {
+    height: 12px;
+    font-size: 12px;
+    color: red;
 }

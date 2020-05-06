@@ -5,15 +5,14 @@ import { Provider } from "react-redux";
 import store from "./components/store/store";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hoc";
-import { Route, Router, Switch } from "react-router";
+import { Router, Switch } from "react-router";
 import ProcessList from "./components/ProcessList/ProcessList";
 import RouteWithLayout from "./layouts/RouteWithLayouts";
 import PublicLayout from "./layouts/PublicLayout/index";
 import PrivateLayout from "./layouts/PrivateLayout/index";
 import LoginForm from "./components/LoginForm/LoginForm";
-import Registration from "./components/RegForm/RegForm";
-import SettingPage from "./components/BackgroundPage/SettingsPage/SettingsPage";
-import regFormContainer from "./components/RegForm/RegFormContainer"
+import regFormContainer from "./components/RegForm/RegistrationPage"
+import SettingContainer from "./components/BackgroundPage/SettingsPage/SettingsPage";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/api/",
@@ -50,7 +49,7 @@ class App extends React.Component {
                 <RouteWithLayout
                   layout={PrivateLayout}
                   path="/setting"
-                  component={SettingPage}
+                  component={SettingContainer}
                 />
                 <RouteWithLayout
                   layout={PrivateLayout}

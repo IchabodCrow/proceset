@@ -23,7 +23,7 @@ const ProcessList = props => {
   if (error) {
     return <p>Ошибка: {error.message}</p>;
   }
- console.log(data?.processList)
+ console.log(data)
   return (
       <div>
         {data.processList && map(data.processList, process => (

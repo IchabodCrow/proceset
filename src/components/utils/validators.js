@@ -15,3 +15,4 @@ export const email = value =>
 
 export const required = value => value ? undefined : 'Введите имя';
 export const requiredSec = value => value ? undefined : 'Введите фамилию';
+export const requiredEmail = value => value ? undefined : 'Введите email';

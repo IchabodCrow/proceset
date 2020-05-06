@@ -52,3 +52,24 @@
 
       color: #404064;
     }
+  .eyeIcon{
+    position: absolute;
+    top: 225px;
+    margin: 0 -25px;
+  }
+  .eyeIconReg1{
+    position: absolute;
+    top: 390px;
+    margin: 0 -25px;
+  }
+  .eyeIconReg2{
+    position: absolute;
+    top: 450px;
+    margin: 0 -25px;
+  }
+  .butEye{ 
+    align-self: flex-end;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }

@@ -1,10 +1,10 @@
 import { createStore, combineReducers } from "redux";
 import {composeWithDevTools} from "redux-devtools-extension"
 import { reducer as formReducer } from "redux-form"
-import reduceFieldsData from '../../reducers/reduceFieldsData'
+import initialValueFieldsReducer from '../../reducers/initialValueFieldsReducer'
 
 const reducers = combineReducers({
-  reduceFieldsData,
+  initialValueFieldsReducer,
   form: formReducer
 })
 

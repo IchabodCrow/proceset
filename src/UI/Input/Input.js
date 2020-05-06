@@ -5,20 +5,12 @@ import myInp from './Input.module.css';
 
 const myInput = ({ input, label, placeholder, type, meta: { touched, error, warning } }) => {
 
-  const cls = [myInp.input]
-
-   
-  if(error && touched){
-    cls.push(myInp.error);
-  }  
+  const hasError = touched && error
 
   return (
   <div>
-    <label>{label}</label>
-    <div>
-      <input {...input} placeholder={placeholder} type={type} className={cls.join(' ')}/>
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-    </div>
+      <input {...input} placeholder={placeholder} type={type} className={myInp.input + ' ' + (hasError ? myInp.error : '') }/>
+  {hasError ? <span className={myInp.label}>{error}</span> : <span className={myInp.label}><br></br></span>}
   </div>
 )}
 

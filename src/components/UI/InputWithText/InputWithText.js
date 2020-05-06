@@ -20,7 +20,8 @@ import InpText from "./InputWithText.module.css"
              <span className={InpText.text}>{this.props.inputText}</span>
              <input {...this.props.input} 
                     type={this.props.type} 
-                    placeholder={this.props.placeholder} 
+                    placeholder={this.props.placeholder}
+                    value={this.props.value} 
                     className={InpText.input}
             ></input>
 

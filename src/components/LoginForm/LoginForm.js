@@ -7,13 +7,33 @@ import Button from '../../UI/Button/Button'
 import myInput from '../../UI/Input/Input'
 import history from '../history/history'
 import { Link } from 'react-router-dom';
-
+import {ReactComponent as Eye} from '../../resources/closeEye.svg';
 
 
 class LoginForm extends React.Component {
     constructor(props){
       super(props)
       this. handleSubmit = this.handleSubmit.bind(this);
+      this. showPasswordText = this.showPasswordText.bind(this);
+    }
+    
+    state = {
+        pressed: false
+    }
+
+    showPasswordText(){
+     if(this.state.pressed === true){
+        this.setState({
+         ...this.state,
+         pressed: false
+        })
+     }
+     else {
+       this.setState({
+         ...this.state,
+         pressed : true
+       })
+     }
     }
 
     handleSubmit(fields) {
@@ -28,6 +48,8 @@ class LoginForm extends React.Component {
           }
         })
         .then(res => {
+          console.log(res.data.login)
+          localStorage.setItem('token', res.data.login.token)
           resolve(res);
           history.push("/setting")
         })
@@ -53,9 +75,10 @@ class LoginForm extends React.Component {
                   placeholder='Введите email'
                   className={layoutCss.field}
               />
+              <button onClick={this.showPasswordText} className={layoutCss.butEye}><Eye className={layoutCss.eyeIcon}/></button>
               <Field
                   name='passwordField'
-                  type='password'
+                  type={this.state.pressed === false ? 'password' : 'text'}
                   component={myInput}
                   placeholder='Введите пароль'
                   className={layoutCss.field}
